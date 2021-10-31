@@ -44,6 +44,16 @@ float ArithmeticCoding::Value(std::vector<bool> code) {
 	return rcode;
 }
 
+float ArithmeticCoding::GetDecimal() const
+{
+	float decimal = 0.0;
+	for (int i = 0; i < m_code.size(); i++) {
+		decimal += m_code[i] * pow(2, -(i + 1));
+	}
+
+	return decimal;
+}
+
 void ArithmeticCoding::GenCodeWords() {
 	std::vector<bool> code;
 	int k = 0;
@@ -63,4 +73,26 @@ void ArithmeticCoding::PrintCode() {
 		if (m_code[i] == false) std::cout << "0";
 		else std::cout << "1";
 	}
+}
+
+std::string ArithmeticCoding::Decode()
+{
+	//get binary cod and convert to decimal
+	float decimal = GetDecimal();
+	//std::vector<std::string>::iterator itr = ;
+	char symbol;
+	std::string out = "";
+	do {
+		for (int i = 0; i < m_ranges.size(); i++) {
+			symbol = m_symbols[i];
+			if (GetLow(symbol) <= decimal && decimal < GetHigh(symbol)) break;
+		}
+		out += symbol;
+		float low = GetLow(symbol);
+		float high = GetHigh(symbol);
+		float range = high - low;
+		decimal = (decimal - low) / range;
+	} while (symbol != '$');
+
+	return out;
 }

@@ -23,6 +23,8 @@ private:
 	float GetHigh(char) ;
 	//Method get decimal value from binray code
 	float Value(std::vector<bool> code);
+	//Convert bin to decimal
+	float GetDecimal() const;
 public:
 	//constructor
 	ArithmeticCoding(std::vector<char>& sym, std::vector<float>& p);
@@ -34,4 +36,7 @@ public:
 	void GenCodeWords();
 	//Printing Encoded code
 	void PrintCode();
+	//Decode code
+
+	std::string Decode();
 };
