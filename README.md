@@ -16,3 +16,10 @@
 
 5. 끝
 5. Done
+
+  2021. 10.31 Update
+  1. 디코딩 기능이 추가되었습니다.
+  1. Decoding function is added.
+  
+  2. 디코드를 하고 싶다면 위의 과정을 진행 후 Decode 함수를 호출해보세요.
+  2. If you want to test it just call Decode function.
